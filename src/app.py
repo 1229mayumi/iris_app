@@ -8,7 +8,8 @@ import os
 # 学習済みモデルをもとに推論する関数
 def predict(x):
     # 学習済みモデル(iris.pkl)を読み込み
-    model_path = os.path.join(os.getcwd(), 'src/iris.pkl')  # <-- 変更
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    model_path = os.path.join(base_dir, 'iris.pkl')  # <-- 変更
     model = joblib.load(model_path)  # <-- 変更
     x = x.reshape(1, -1)
     pred_label = model.predict(x)

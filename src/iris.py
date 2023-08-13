@@ -27,7 +27,7 @@ pred = model.predict(x_test)
 print(classification_report(t_test, pred))
 
 # 学習済みモデルを絶対パスで保存
-current_directory = os.getcwd()
-model_path = os.path.join(current_directory, "src/iris.pkl")
+base_dir = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(base_dir, 'iris.pkl')
 joblib.dump(model, model_path, compress=True)
 
