@@ -75,4 +75,4 @@ def predicts():
         return render_template('index.html', forms=irisForm)
 # アプリケーションの実行
 if __name__ == "__main__":
-    app.run(debug=True) #デプロイする時にはFalseに変える
+    app.run(debug=False) #デプロイする時にはFalseに変える
