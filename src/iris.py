@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import svm
 from sklearn.metrics import classification_report
 import joblib
+import os
 
 # データの取得
 iris = load_iris()
@@ -25,6 +26,8 @@ pred = model.predict(x_test)
 # 予測精度を確認
 print(classification_report(t_test, pred))
 
-# 学習済みモデルを保存
-joblib.dump(model, "src/iris.pkl", compress=True)
+# 学習済みモデルを絶対パスで保存
+current_directory = os.getcwd()
+model_path = os.path.join(current_directory, "src/iris.pkl")
+joblib.dump(model, model_path, compress=True)
 

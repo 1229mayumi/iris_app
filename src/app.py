@@ -3,11 +3,13 @@ import joblib
 from flask import Flask, request, render_template
 from wtforms import Form, FloatField, validators, SubmitField
 import numpy as np
+import os
 
 # 学習済みモデルをもとに推論する関数
 def predict(x):
     # 学習済みモデル(iris.pkl)を読み込み
-    model = joblib.load('./src/iris.pkl')
+    model_path = os.path.join(os.getcwd(), 'src/iris.pkl')  # <-- 変更
+    model = joblib.load(model_path)  # <-- 変更
     x = x.reshape(1, -1)
     pred_label = model.predict(x)
     return pred_label
